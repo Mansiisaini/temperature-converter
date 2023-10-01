@@ -1,92 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Temperature Converter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: white;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:green;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-    .container {
-      background-color: ;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-      width: 300px;
-      margin: 0 auto;
-    }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
+        h2 {
+            color: #333;
+        }
 
-    label {
-      font-weight: bold;
-    }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
 
-    input[type="number"] {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-    button {
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
+        button:hover {
+            background-color: #45a049;
+        }
 
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    #result {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-  </style>
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Temperature Converter</h1>
-    <label for="fahrenheit">Fahrenheit:</label>
-    <input type="number" id="fahrenheit">
-    <br>
-    <label for="celsius">Celsius:</label>
-    <input type="number" id="celsius">
-    <br>
-    <button onclick="convertTemperature()">Convert</button>
-    <div id="result"></div>
-  </div>
 
-  <script>
-    function convertTemperature() {
-      const fahrenheitInput = document.getElementById("fahrenheit");
-      const celsiusInput = document.getElementById("celsius");
-      const resultDiv = document.getElementById("result");
+    <div class="container">
+        <h2>Temperature Converter</h2>
+        <label for="celsius">Celsius:</label>
+        <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
 
-      if (fahrenheitInput.value !== "") {
-        const fahrenheit = parseFloat(fahrenheitInput.value);
-        const celsius = (fahrenheit - 32) * (5 / 9);
-        celsiusInput.value = celsius.toFixed(2);
-        resultDiv.textContent = `${fahrenheit}°F is equal to ${celsius.toFixed(2)}°C`;
-      } else if (celsiusInput.value !== "") {
-        const celsius = parseFloat(celsiusInput.value);
-        const fahrenheit = (celsius * 9/5) + 32;
-        fahrenheitInput.value = fahrenheit.toFixed(2);
-        resultDiv.textContent = `${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F`;
-      } else {
-        resultDiv.textContent = "Please enter a temperature to convert.";
-      }
-    }
-  </script>
+        <label for="fahrenheit">Fahrenheit:</label>
+        <input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit">
+
+        <button onclick="convertTemperature()">Convert</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            var celsius = document.getElementById('celsius').value;
+            var fahrenheit = document.getElementById('fahrenheit').value;
+
+            if (celsius !== "") {
+                fahrenheit = (celsius * 9/5) + 32;
+                document.getElementById('fahrenheit').value = fahrenheit;
+                document.getElementById('result').innerHTML = celsius + "°C is " + fahrenheit + "°F";
+            } else if (fahrenheit !== "") {
+                celsius = (fahrenheit - 32) * 5/9;
+                document.getElementById('celsius').value = celsius;
+                document.getElementById('result').innerHTML = fahrenheit + "°F is " + celsius + "°C";
+            } else {
+                alert("Please enter a temperature value.");
+            }
+        }
+    </script>
+
 </body>
 </html>
+
